@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MAUI_MultiAxis_Chart.MainPage"
+             xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
+            xmlns:local="clr-namespace:MAUI_MultiAxis_Chart">
+
+
+    <tabView:SfTabView x:Name="tabView">
+        <tabView:SfTabView.Items>
+            <tabView:SfTabItem Header="Column and Spline Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_ColumnAndSplineChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            
+            <tabView:SfTabItem Header="Spline Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_SplineChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Area Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_AreaChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Bar Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_BarChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Scatter Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_ScatterChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+            <tabView:SfTabItem Header="Combination Chart">
+                <tabView:SfTabItem.Content>
+                    <local:MultiAxis_CombinationChart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+            
+            <tabView:SfTabItem Header="Axis-Crossing Chart">
+                <tabView:SfTabItem.Content>
+                    <local:AxisCrossing_Chart/>
+                </tabView:SfTabItem.Content>
+            </tabView:SfTabItem>
+
+        </tabView:SfTabView.Items>
+    </tabView:SfTabView>
+    
+</ContentPage>

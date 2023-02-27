@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_BarChart" Margin="15">
+    <ContentView.Content>
+        <Chart:SfCartesianChart EnableSideBySideSeriesPlacement="False" >
+            <Chart:SfCartesianChart.BindingContext>
+                <local:SalesDetails/>
+            </Chart:SfCartesianChart.BindingContext>
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Mobiles Market Share" HorizontalOptions="Fill" 
+                       HorizontalTextAlignment="Center" VerticalOptions="Center" 
+                       FontSize="16" TextColor="Black"/>
+            </Chart:SfCartesianChart.Title>
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:CategoryAxis  Name="xAxis1" ShowMajorGridLines="False">
+                    <Chart:CategoryAxis.Title>
+                        <Chart:ChartAxisTitle Text="Brand"/>
+                    </Chart:CategoryAxis.Title>
+                </Chart:CategoryAxis>
+            </Chart:SfCartesianChart.XAxes>
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis Name="yAxis1"  Maximum="50" Minimum="-50" 
+                                     ShowMajorGridLines="False" 
+                                     LabelCreated="yAxis1_LabelCreated">
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text="2012 Year Market Share" 
+                                              TextColor="#0078DE"/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#0078DE" StrokeWidth="0"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#0078DE"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis2"  Maximum="150" Minimum="-150" 
+                                     ShowMajorGridLines="False" 
+                                     CrossesAt="{Static x:Double.MaxValue}" 
+                                     RenderNextToCrossingValue="True"  
+                                     LabelCreated="yAxis1_LabelCreated">
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text="2013 Year Market Share" 
+                                              TextColor="#B146C2"/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#B146C2" StrokeWidth="0"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#B146C2"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+            </Chart:SfCartesianChart.YAxes>
+            <Chart:ColumnSeries ItemsSource="{Binding SalesCollection1}" 
+                                XBindingPath="Category" Fill="#0078DE"
+                                YBindingPath="MarketShare" Opacity="0.5" />
+
+            <Chart:ColumnSeries ItemsSource="{Binding SalesCollection2}" 
+                                XBindingPath="Category" Fill="#B146C2"
+                                YBindingPath="MarketShare"
+                                Opacity="0.5" YAxisName="yAxis2"/>
+
+        </Chart:SfCartesianChart>
+    </ContentView.Content>
+</ContentView>

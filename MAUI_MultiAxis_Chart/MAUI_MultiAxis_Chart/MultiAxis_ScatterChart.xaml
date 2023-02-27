@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart" Margin="15"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_ScatterChart">
+    <ContentView.Content>
+        <Chart:SfCartesianChart>
+            <Chart:SfCartesianChart.BindingContext>
+                <local:BlogDetails/>
+            </Chart:SfCartesianChart.BindingContext>
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Blog status month wise" HorizontalOptions="Fill" 
+                       HorizontalTextAlignment="Center" VerticalOptions="Center" 
+                       FontSize="16" TextColor="Black"/>
+            </Chart:SfCartesianChart.Title>
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:DateTimeAxis  Name="xAxis1" ShowMajorGridLines="False"
+                                     PlotOffsetStart="10" PlotOffsetEnd="10" 
+                                     EdgeLabelsDrawingMode="Center">
+                    <Chart:DateTimeAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle LabelFormat="MMM"/>
+                    </Chart:DateTimeAxis.LabelStyle>
+                </Chart:DateTimeAxis>
+            </Chart:SfCartesianChart.XAxes>
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis Name="yAxis1"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" 
+                                     PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#0078DE"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#0078DE"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#0078DE"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis2"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     CrossesAt="{Static x:Double.MaxValue}" 
+                                     RenderNextToCrossingValue="True" 
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" 
+                                     PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text=" "/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#B146C2"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#B146C2"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#B146C2"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis3"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     CrossesAt="{Static x:Double.MaxValue}" 
+                                     RenderNextToCrossingValue="True"  
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" 
+                                     PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#00CC6A"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#00CC6A"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#00CC6A"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+            </Chart:SfCartesianChart.YAxes>
+            <Chart:SfCartesianChart.Legend>
+                <Chart:ChartLegend/>
+            </Chart:SfCartesianChart.Legend>
+            <Chart:ScatterSeries Label="Likes" ItemsSource="{Binding BlogData}" 
+                                    XBindingPath="DateTime" Fill="#0078DE" 
+                                    PointHeight="12" PointWidth="12"
+                                    YBindingPath="Likes" Type="Pentagon" LegendIcon="Pentagon"/>
+
+            <Chart:ScatterSeries Label="Views" ItemsSource="{Binding BlogData}" 
+                                    XBindingPath="DateTime" Fill="#B146C2"
+                                    YBindingPath="Views"  PointHeight="12" PointWidth="12"
+                                    YAxisName="yAxis2" Type="Diamond" LegendIcon="Diamond"/>
+
+            <Chart:ScatterSeries Label="Hits" ItemsSource="{Binding BlogData}" 
+                                    XBindingPath="DateTime" Fill="#00CC6A"
+                                    YBindingPath="Hits"  PointHeight="12" PointWidth="12"
+                                    YAxisName="yAxis3" Type="Triangle" LegendIcon="Triangle"/>
+
+        </Chart:SfCartesianChart>
+    </ContentView.Content>
+</ContentView>

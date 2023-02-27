@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart" Margin="10"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_CombinationChart">
+    <ContentView.Content>
+        <Chart:SfCartesianChart EnableSideBySideSeriesPlacement="True">
+
+            <Chart:SfCartesianChart.BindingContext>
+                <local:SalesDetails/>
+            </Chart:SfCartesianChart.BindingContext>
+            <Chart:SfCartesianChart.Legend>
+                <Chart:ChartLegend Placement="Top"/>
+            </Chart:SfCartesianChart.Legend>
+
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Monthly finance analysis" HorizontalOptions="Center"/>
+            </Chart:SfCartesianChart.Title>
+
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:CategoryAxis ShowMajorGridLines="False"/>
+            </Chart:SfCartesianChart.XAxes>
+
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis Name="yAxis1" 
+                                     ShowMajorGridLines="False" 
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible"
+                                     PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#0078DE"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#0078DE"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#0078DE" 
+                                                   LabelFormat="$0.#"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis2"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text=" "/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#B146C2"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#B146C2"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#B146C2" 
+                                                   LabelFormat="$0.#"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis3"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     CrossesAt="{Static x:Double.MaxValue}" 
+                                     RenderNextToCrossingValue="True"  
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#00CC6A"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#00CC6A"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#00CC6A" LabelFormat="$0.#"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis4"  RangePadding="Additional"
+                                     ShowMajorGridLines="False" 
+                                     CrossesAt="{Static x:Double.MaxValue}" 
+                                     RenderNextToCrossingValue="True"  
+                                     EdgeLabelsDrawingMode="Center"
+                                     EdgeLabelsVisibilityMode="Visible" 
+                                     PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#FFB900"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle Stroke="#FFB900"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#FFB900" 
+                                                   LabelFormat="$0.#"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+            </Chart:SfCartesianChart.YAxes>
+
+            <Chart:SplineAreaSeries Label="Revenue" Fill="#0091E6" Opacity="0.5"
+                                    ItemsSource="{Binding SalesData2}" 
+                                    XBindingPath="Month"  
+                                    YBindingPath="Revenue" 
+                                    LegendIcon="Pentagon"/>
+            <Chart:SplineSeries Label="Profit" ItemsSource="{Binding SalesData2}" 
+                                XBindingPath="Month"  
+                                YBindingPath="Profit"
+                                Fill="#B146C2" YAxisName="yAxis2" 
+                                ShowMarkers="True"
+                                LegendIcon="HorizontalLine" 
+                                StrokeWidth="2"/>
+            <Chart:SplineSeries Label="Expenses" ItemsSource="{Binding SalesData2}" 
+                                XBindingPath="Month"  
+                                YBindingPath="Expenses"
+                                Fill="#00CC6A" YAxisName="yAxis3" 
+                                ShowMarkers="True"
+                                LegendIcon="HorizontalLine" StrokeWidth="2"/>
+            <Chart:SplineSeries Label="CashFlow" ItemsSource="{Binding SalesData2}" 
+                                XBindingPath="Month"  
+                                YBindingPath="CashFlow"
+                                Fill="#FFB900" YAxisName="yAxis4" 
+                                ShowMarkers="True"
+                                LegendIcon="HorizontalLine" StrokeWidth="2"/>
+
+        </Chart:SfCartesianChart>
+    </ContentView.Content>
+</ContentView>

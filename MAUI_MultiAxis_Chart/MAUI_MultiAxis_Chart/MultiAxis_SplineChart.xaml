@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart"
+             Margin="15"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_SplineChart">
+    <ContentView.Content>
+
+        <Chart:SfCartesianChart>
+            <Chart:SfCartesianChart.BindingContext>
+                <local:TemperatureDetails />
+            </Chart:SfCartesianChart.BindingContext>
+            <Chart:SfCartesianChart.Legend>
+                <Chart:ChartLegend ToggleSeriesVisibility="True"/>
+            </Chart:SfCartesianChart.Legend>
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Average High Temperature of London" Margin="0" 
+                       HorizontalOptions="Fill" 
+                       HorizontalTextAlignment="Center" VerticalOptions="Center" 
+                       FontSize="16" TextColor="Black"/>
+            </Chart:SfCartesianChart.Title>
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:CategoryAxis ShowMajorGridLines="false" 
+                                    PlotOffsetStart="10" 
+                                    PlotOffsetEnd="10" AxisLineOffset="10">
+                </Chart:CategoryAxis>
+            </Chart:SfCartesianChart.XAxes>
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis x:Name="yAxis1"  Maximum="30" Minimum="0" 
+                                     Interval="10"
+                                     ShowMajorGridLines="False">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle StrokeWidth="0">
+                        </Chart:ChartLineStyle>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0" />
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle LabelFormat="0'°C" />
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis2" Maximum="80" Minimum="30" 
+                                     Interval="10" CrossesAt="{Static x:Double.MaxValue}" 
+                                     ShowMajorGridLines="False" 
+                                     RenderNextToCrossingValue="True">
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle StrokeWidth="0"/>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0" />
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle LabelFormat="0'°F" />
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+            </Chart:SfCartesianChart.YAxes>
+            <Chart:SplineSeries Label="Celsius" ItemsSource="{Binding TemperatureData}" 
+                                    XBindingPath="Month" 
+                                    YBindingPath="Celsius" 
+                                    ShowMarkers="True">
+                <Chart:SplineSeries.MarkerSettings>
+                    <Chart:ChartMarkerSettings Width="8" Height="8" Fill="White" 
+                                                   Stroke="#48988B" StrokeWidth="1"/>
+                </Chart:SplineSeries.MarkerSettings>
+            </Chart:SplineSeries>
+            <Chart:SplineSeries Label="Fahrenheit" ItemsSource="{Binding TemperatureData}" 
+                                    XBindingPath="Month" 
+                                    YBindingPath="Fahrenheit" StrokeWidth="1" 
+                                    ShowMarkers="True" YAxisName="yAxis2">
+                <Chart:SplineSeries.MarkerSettings>
+                    <Chart:ChartMarkerSettings Width="8" Height="8" Fill="White" 
+                                                    Stroke="#314A6E" 
+                                                   StrokeWidth="1"/>
+                </Chart:SplineSeries.MarkerSettings>
+            </Chart:SplineSeries>
+        </Chart:SfCartesianChart>
+
+    </ContentView.Content>
+</ContentView>

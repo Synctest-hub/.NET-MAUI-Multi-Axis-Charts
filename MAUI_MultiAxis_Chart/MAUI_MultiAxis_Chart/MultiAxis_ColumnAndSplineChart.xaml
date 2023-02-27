@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_ColumnAndSplineChart"  Margin="10">
+    <ContentView.Content>
+        <Chart:SfCartesianChart>
+
+            <Chart:SfCartesianChart.BindingContext>
+                <local:ViewModel/>
+            </Chart:SfCartesianChart.BindingContext>
+
+            <Chart:SfCartesianChart.Legend>
+                <Chart:ChartLegend Placement="Bottom"/>
+            </Chart:SfCartesianChart.Legend>
+
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Sales Vs Target" HorizontalOptions="Center"/>
+            </Chart:SfCartesianChart.Title>
+
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:DateTimeAxis Interval="1" Name="primaryX"  IntervalType="Months" 
+                                    Minimum="2021-12-15" Maximum="2022-06-15" 
+                                    ShowMajorGridLines="False" RangePadding="Additional" >
+                    <Chart:DateTimeAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle  LabelFormat="MMM" 
+                                                    TextColor="#6d7372" FontSize="12"/>
+                    </Chart:DateTimeAxis.LabelStyle>
+                </Chart:DateTimeAxis>
+            </Chart:SfCartesianChart.XAxes>
+
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis  Name="primaryY"  EdgeLabelsVisibilityMode="Visible" 
+                                      Minimum="0" Maximum="25000" Interval="5000" 
+                                      PlotOffsetEnd="10" EdgeLabelsDrawingMode="Center">
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#0091E6" FontSize="12" 
+                                                   FontAttributes="Bold" LabelFormat="$0.#"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+
+                <Chart:NumericalAxis CrossesAt="{Static x:Double.MaxValue}" 
+                                     ShowMajorGridLines="False" 
+                                     RenderNextToCrossingValue="True"
+                                     Name="secondaryY"  Interval="25" 
+                                     Minimum="0" Maximum="100" 
+                                     EdgeLabelsDrawingMode="Center" PlotOffsetEnd="10">
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle TextColor="#ff1493" FontSize="12" 
+                                                   FontAttributes="Bold" LabelFormat="0.#'%'"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+
+            </Chart:SfCartesianChart.YAxes>
+
+            <Chart:ColumnSeries Label="Sales" Fill="#0091E6" x:Name="series" 
+                                    LegendIcon="Rectangle" ItemsSource="{Binding Data}" 
+                                    XBindingPath="Month"  YBindingPath="Sales" 
+                                    YAxisName="primaryY"/>
+            <Chart:SplineSeries Label="Target achieved" Fill="#ff1493" 
+                                    LegendIcon="HorizontalLine" 
+                                    ItemsSource="{Binding Data}" 
+                                    XBindingPath="Month"  YBindingPath="Target"
+                                    StrokeWidth="3" YAxisName="secondaryY" 
+                                    ShowMarkers="True">
+                <Chart:SplineSeries.MarkerSettings>
+                    <Chart:ChartMarkerSettings Height="15" Width="15"/>
+                </Chart:SplineSeries.MarkerSettings>
+            </Chart:SplineSeries>
+
+        </Chart:SfCartesianChart>
+    </ContentView.Content>
+</ContentView>

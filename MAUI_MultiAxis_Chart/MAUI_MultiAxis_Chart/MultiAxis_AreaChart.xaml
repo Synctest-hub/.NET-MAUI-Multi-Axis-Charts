@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:Chart="http://schemas.syncfusion.com/maui"
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart"
+             x:Class="MAUI_MultiAxis_Chart.MultiAxis_AreaChart">
+    <ContentView.Content>
+        <Chart:SfCartesianChart x:Name="Chart"  HorizontalOptions="Fill" Margin="15"
+                                VerticalOptions="CenterAndExpand">
+            <Chart:SfCartesianChart.BindingContext>
+                <local:SalesDetails />
+            </Chart:SfCartesianChart.BindingContext>
+            <Chart:SfCartesianChart.Title>
+                <Label Text="Sales vs Revenue" Margin="0" HorizontalOptions="Fill" 
+                       HorizontalTextAlignment="Center" VerticalOptions="Center" 
+                       FontSize="16" TextColor="Black"/>
+            </Chart:SfCartesianChart.Title>
+            <Chart:SfCartesianChart.XAxes>
+                <Chart:CategoryAxis ShowMajorGridLines="false" PlotOffsetStart="10" 
+                                    PlotOffsetEnd="10" AxisLineOffset="10">
+                </Chart:CategoryAxis>
+            </Chart:SfCartesianChart.XAxes>
+            <Chart:SfCartesianChart.YAxes>
+                <Chart:NumericalAxis x:Name="yAxis1"  Maximum="40" Minimum="0" Interval="10"
+                                     ShowMajorGridLines="False">
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text="Number of Sales"  TextColor="#0078DE"/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle Stroke="#0078DE" StrokeWidth="0">
+                        </Chart:ChartLineStyle>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0" Stroke="#0078DE"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle  TextColor="#0078DE"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+                <Chart:NumericalAxis Name="yAxis2" Maximum="600" Minimum="0" Interval="100"
+                                   CrossesAt="{Static x:Double.MaxValue}" 
+                                 RenderNextToCrossingValue="True" ShowMajorGridLines="False" >
+                    <Chart:NumericalAxis.Title>
+                        <Chart:ChartAxisTitle Text="Total Revenue" TextColor="#B146C2"/>
+                    </Chart:NumericalAxis.Title>
+                    <Chart:NumericalAxis.AxisLineStyle>
+                        <Chart:ChartLineStyle StrokeWidth="0" Stroke="#B146C2">
+                        </Chart:ChartLineStyle>
+                    </Chart:NumericalAxis.AxisLineStyle>
+                    <Chart:NumericalAxis.MajorTickStyle>
+                        <Chart:ChartAxisTickStyle TickSize="0" Stroke="#B146C2"/>
+                    </Chart:NumericalAxis.MajorTickStyle>
+                    <Chart:NumericalAxis.LabelStyle>
+                        <Chart:ChartAxisLabelStyle LabelFormat="0'K" TextColor="#B146C2"/>
+                    </Chart:NumericalAxis.LabelStyle>
+                </Chart:NumericalAxis>
+            </Chart:SfCartesianChart.YAxes>
+            <Chart:SplineAreaSeries ItemsSource="{Binding SalesData}" 
+                                    XBindingPath="Month" Fill="#0078DE"
+                                    YBindingPath="SalesCount" Opacity="0.5" />
+
+            <Chart:SplineAreaSeries ItemsSource="{Binding SalesData}" 
+                                    XBindingPath="Month" Fill="#B146C2"
+                                    YBindingPath="Revenue"
+                                    YAxisName="yAxis2" Opacity="0.5"/>
+        </Chart:SfCartesianChart>
+    </ContentView.Content>
+</ContentView>
