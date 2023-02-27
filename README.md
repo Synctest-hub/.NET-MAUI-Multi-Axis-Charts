@@ -1,1 +1,1 @@
-# .NET-MAUI-Multi-Axis-Charts
+# .NET MAUI Multi Axis Charts
