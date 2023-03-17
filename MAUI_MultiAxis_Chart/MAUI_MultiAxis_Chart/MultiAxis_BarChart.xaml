@@ -26,7 +26,7 @@
                                      ShowMajorGridLines="False" 
                                      LabelCreated="yAxis1_LabelCreated">
                     <Chart:NumericalAxis.Title>
-                        <Chart:ChartAxisTitle Text="2012 Year Market Share" 
+                        <Chart:ChartAxisTitle Text="2012 Market Share" 
                                               TextColor="#0078DE"/>
                     </Chart:NumericalAxis.Title>
                     <Chart:NumericalAxis.AxisLineStyle>
@@ -45,7 +45,7 @@
                                      RenderNextToCrossingValue="True"  
                                      LabelCreated="yAxis1_LabelCreated">
                     <Chart:NumericalAxis.Title>
-                        <Chart:ChartAxisTitle Text="2013 Year Market Share" 
+                        <Chart:ChartAxisTitle Text="2013 Market Share" 
                                               TextColor="#B146C2"/>
                     </Chart:NumericalAxis.Title>
                     <Chart:NumericalAxis.AxisLineStyle>

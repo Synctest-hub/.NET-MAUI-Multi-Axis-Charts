@@ -10,7 +10,7 @@
                 <local:BlogDetails/>
             </Chart:SfCartesianChart.BindingContext>
             <Chart:SfCartesianChart.Title>
-                <Label Text="Blog status month wise" HorizontalOptions="Fill" 
+                <Label Text="Blog Status by Month" HorizontalOptions="Fill" 
                        HorizontalTextAlignment="Center" VerticalOptions="Center" 
                        FontSize="16" TextColor="Black"/>
             </Chart:SfCartesianChart.Title>
