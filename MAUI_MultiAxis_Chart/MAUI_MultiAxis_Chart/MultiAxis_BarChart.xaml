@@ -10,7 +10,7 @@
                 <local:SalesDetails/>
             </Chart:SfCartesianChart.BindingContext>
             <Chart:SfCartesianChart.Title>
-                <Label Text="Mobiles Market Share" HorizontalOptions="Fill" 
+                <Label Text="Mobile Phone Market Share" HorizontalOptions="Fill" 
                        HorizontalTextAlignment="Center" VerticalOptions="Center" 
                        FontSize="16" TextColor="Black"/>
             </Chart:SfCartesianChart.Title>
