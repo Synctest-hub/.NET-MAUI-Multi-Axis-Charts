@@ -1,5 +1,5 @@
 # .NET MAUI Multi Axis Charts
-The MAUI Multi-Axis Chart Application! This application showcases the power of .NET MAUI and Syncfusion's charting components by demonstrating various multi-axis chart types.
+The MAUI Multi-Axis Chart Application! This application showcases the power of .NET MAUI and Syncfusion chart control by demonstrating various multi-axis chart types.
 
 <img width="960" alt="MultiAxis" src="https://github.com/SuryaKaran2143/.NET-MAUI-Multi-Axis-Charts/assets/113962276/233a8b92-3d02-4ff4-a77e-aa5255d228d1">
 
