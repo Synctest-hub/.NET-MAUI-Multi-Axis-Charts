@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MAUI_MultiAxis_Chart.MainPage"
              xmlns:tabView="clr-namespace:Syncfusion.Maui.TabView;assembly=Syncfusion.Maui.TabView"
-            xmlns:local="clr-namespace:MAUI_MultiAxis_Chart" BackgroundColor="White">
+             xmlns:local="clr-namespace:MAUI_MultiAxis_Chart" BackgroundColor="White">
 
 
     <tabView:SfTabView x:Name="tabView" TabWidthMode="SizeToContent">
