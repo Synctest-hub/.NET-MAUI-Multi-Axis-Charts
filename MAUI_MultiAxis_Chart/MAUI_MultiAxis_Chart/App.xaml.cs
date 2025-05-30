@@ -1,11 +1,15 @@
-﻿namespace MAUI_MultiAxis_Chart;
-
-public partial class App : Application
+﻿namespace MAUI_MultiAxis_Chart
 {
-	public App()
-	{
-		InitializeComponent();
+    public partial class App : Application
+    {
+        public App()
+        {
+            InitializeComponent();
+        }
 
-		MainPage = new AppShell();
-	}
+        protected override Window CreateWindow(IActivationState? activationState)
+        {
+            return new Window(new MainPage());
+        }
+    }
 }
